@@ -10,11 +10,11 @@ class ActionParser:
     }
     
     new_action_space_pattern = {
-        'Click': r'click\([\'\"]([A-Z]{1,3})[\'\"]\)',
-        'Hover': r'hover\([\'\"]([A-Z]{1,3})[\'\"]\)',
-        'Scroll_up': r'scroll_page\([\'\"]up[\'\"]\)',
-        'Scroll_down': r'scroll_page\([\'\"]down[\'\"]\)',
-        'Type': r'type_string\([\'\"]([A-Z]{1,3})[\'\"]\s*,\s*[\'\"](.+)[\'\"]\s*,\s*(True|False)\)',
+        'Click': r'click\([\'\"]([A-Za-z0-9-_]+)[\'\"](?:\s*\)|\s*,\s*.*\))',
+        'Hover': r'hover\([\'\"]([A-Za-z0-9-_]+)[\'\"](?:\s*\)|\s*,\s*.*\))',
+        'Scroll_up': r'scroll_page\([\'\"]up[\'\"](?:\s*\)|\s*,\s*.*\))',
+        'Scroll_down': r'scroll_page\([\'\"]down[\'\"](?:\s*\)|\s*,\s*.*\))',
+        'Type': r'type_string\([\'\"]([A-Za-z0-9-_]+)[\'\"],\s*[\'\"](.+)[\'\"](?:\s*,\s*(True|False)|,\s*press_enter\s*=\s*(True|False))\)',
     }
     
     prompts = {
@@ -106,9 +106,11 @@ class ActionParser:
     def extract_operation_new_action_space(result: str='') -> (str, str):
         import re
         opstr = result
-        
+        print("--------------------------------here--------------------------------\n")
+        print(opstr)
         for op, pattern in ActionParser.new_action_space_pattern.items():
             match = re.search(pattern, opstr)
+            print(match)
             if not match:
                 continue
             param = match.groups()

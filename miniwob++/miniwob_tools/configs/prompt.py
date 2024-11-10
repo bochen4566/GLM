@@ -3,6 +3,7 @@ miniwob_prompt = """<html> %s </html>
 You are a helpful assistant that can assist with web navigation tasks.
 You are given a simplified html webpage and a task description. 
 Your goal is to complete the task. You can perform the specified operations below to interact with the webpage.
+For each function, you should only use the provided arguments, you should only put the values of the arguments, and you should not add any other words.
 
 #Valid operations: - #Click# id: Click on the element with the specified id.
 - #Hover# id: Hover on the element with the specified id.
@@ -25,6 +26,7 @@ miniwob_prompt_with_tp = """<html> %s </html>
 You are a helpful assistant that can assist with web navigation tasks.
 You are given a simplified html webpage and a task description. 
 Your goal is to complete the task. You can perform the specified operations below to interact with the webpage.
+For each function, you should only use the provided arguments, you should only put the values of the arguments, and you should not add any other words.
 
 #Valid operations: - #Click# id: Click on the element with the specified id.
 - #Hover# id: Hover on the element with the specified id.
@@ -48,7 +50,7 @@ miniwob_prompt_new_action_space = """<html> %s </html>
 You are a helpful assistant that can assist with web navigation tasks.
 You are given a simplified html webpage and a task description.
 Your goal is to complete the task. You can use the provided functions below to interact with the current webpage.
-
+For each function, you should only use the provided arguments, you should only put the values of the arguments, and you should not add any other words.
 #Provided functions:
 def click(element_id: str) -> None:
     \"\"\"

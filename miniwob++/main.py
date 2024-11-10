@@ -38,6 +38,7 @@ formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
 console_handler.setFormatter(formatter)
 file_handler.setFormatter(formatter)
 
+import asyncio
 class TestMiniwob:
     def __init__(self, model_path='chatgpt', result_path=LOG_CONTENT, cuda: str='0', log_path='logs/', prompt='new_action_space'):
         self.action_parser = ActionParser(prompt=prompt)
@@ -45,7 +46,9 @@ class TestMiniwob:
         self.llm = CallLLM(model_path, cuda)
     
     def get_operation(self, prompt: str):
-        res = self.llm.model_call(prompt)
+        # Run the coroutine in the event loop
+        res = asyncio.run(self.llm.model_call(prompt))
+        logger.debug(f"LLM Response type: {type(res)}, value: {res}")
         act = self.action_parser.extract(res)
         return act, res
     
@@ -253,7 +256,10 @@ class TestMiniwob:
                     json.dump(meta, f, ensure_ascii=False)
         
         except Exception as e:
-            logger.error(e)
+            logger.error(f"Error in test method: {str(e)}")
+            logger.error(f"Error type: {type(e)}")
+            import traceback
+            logger.error(traceback.format_exc())
         finally:
             env.close()
         

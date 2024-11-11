@@ -1,20 +1,35 @@
 from .configs import miniwob_prompt, miniwob_prompt_with_tp, miniwob_prompt_new_action_space
 
 class ActionParser:
+    # operation_pattern = {
+    #     'Click': r'#Click#\s*([A-Z]{1,3})',
+    #     'Hover': r'#Hover#\s*([A-Z]{1,3})',
+    #     'Scroll_up': r'#Scroll_up#',
+    #     'Scroll_down': r'#Scroll_down#',
+    #     'Type': r'#Type#\s*([A-Z]{1,3})\s*"{0,1}(.+)"{0,1}',
+    # }
+    
+    # new_action_space_pattern = {
+    #     'Click': r'click\([\'\"]([A-Za-z0-9-_]+)[\'\"](?:\s*\)|\s*,\s*.*\))',
+    #     'Hover': r'hover\([\'\"]([A-Za-z0-9-_]+)[\'\"](?:\s*\)|\s*,\s*.*\))',
+    #     'Scroll_up': r'scroll_page\([\'\"]up[\'\"](?:\s*\)|\s*,\s*.*\))',
+    #     'Scroll_down': r'scroll_page\([\'\"]down[\'\"](?:\s*\)|\s*,\s*.*\))',
+    #     'Type': r'type_string\([\'\"]([A-Za-z0-9-_]+)[\'\"],\s*[\'\"](.+)[\'\"](?:\s*,\s*(True|False)|,\s*press_enter\s*=\s*(True|False))\)',
+    # }
     operation_pattern = {
-        'Click': r'#Click#\s*([A-Z]{1,3})',
-        'Hover': r'#Hover#\s*([A-Z]{1,3})',
-        'Scroll_up': r'#Scroll_up#',
-        'Scroll_down': r'#Scroll_down#',
-        'Type': r'#Type#\s*([A-Z]{1,3})\s*"{0,1}(.+)"{0,1}',
+        'Click': r'(?s).*?#Click#\s*([A-Z]{1,3})',
+        'Hover': r'(?s).*?#Hover#\s*([A-Z]{1,3})',
+        'Scroll_up': r'(?s).*?#Scroll_up#',
+        'Scroll_down': r'(?s).*?#Scroll_down#',
+        'Type': r'(?s).*?#Type#\s*([A-Z]{1,3})\s*"{0,1}(.+)"{0,1}',
     }
     
     new_action_space_pattern = {
-        'Click': r'click\([\'\"]([A-Za-z0-9-_]+)[\'\"](?:\s*\)|\s*,\s*.*\))',
-        'Hover': r'hover\([\'\"]([A-Za-z0-9-_]+)[\'\"](?:\s*\)|\s*,\s*.*\))',
-        'Scroll_up': r'scroll_page\([\'\"]up[\'\"](?:\s*\)|\s*,\s*.*\))',
-        'Scroll_down': r'scroll_page\([\'\"]down[\'\"](?:\s*\)|\s*,\s*.*\))',
-        'Type': r'type_string\([\'\"]([A-Za-z0-9-_]+)[\'\"],\s*[\'\"](.+)[\'\"](?:\s*,\s*(True|False)|,\s*press_enter\s*=\s*(True|False))\)',
+        'Click': r'(?s).*?click\([\'\"]([A-Za-z0-9-_]+)[\'\"](?:\s*\)|\s*,\s*.*\))',
+        'Hover': r'(?s).*?hover\([\'\"]([A-Za-z0-9-_]+)[\'\"](?:\s*\)|\s*,\s*.*\))',
+        'Scroll_up': r'(?s).*?scroll_page\([\'\"]up[\'\"](?:\s*\)|\s*,\s*.*\))',
+        'Scroll_down': r'(?s).*?scroll_page\([\'\"]down[\'\"](?:\s*\)|\s*,\s*.*\))',
+        'Type': r'(?s).*?type_string\([\'\"]([A-Za-z0-9-_]+)[\'\"],\s*[\'\"](.+)[\'\"](?:\s*,\s*(True|False)|,\s*press_enter\s*=\s*(True|False))\)',
     }
     
     prompts = {

@@ -32,7 +32,7 @@ async def call_gpt(model, prompt, history=None, system=None):
     })
     
     data = {
-        "model": model,
+        "model": "mradermacher/chatglm3-6b-GGUF",
         "messages": messages,
         "temperature": 0.7,
         "max_tokens": 100

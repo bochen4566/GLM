@@ -7,7 +7,7 @@ import numpy as np
 from html_tools import HtmlParser, basic_attrs
 from miniwob_tools import ActionParser, testcases, mwpp_attrs, not_clickable_tag, miniwob_attrs
 from miniwob_tools import save_pixel_array, get_dom_list, get_html, update_dom_list, get_position_bar, get_position_info, process_dom_list
-from llms import CallLLM
+from llms.call import CallLLM
 
 import multiprocessing as mp
 

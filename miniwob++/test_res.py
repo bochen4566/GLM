@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 
 # Get current directory
-result_path = 'outlog/out1/'
+result_path = 'outlog/out2/'
 
 scores = {}
 for filename in os.listdir(result_path):

@@ -24,7 +24,7 @@
     "guess-number": 0.0,
     "choose-date-medium": 0.0,
     "click-collapsible": 0.0,
-    "click-dialog": 0.0,
+    "click-dialog": 1.0,
     "click-shades": 0.0,
     "click-tab-2-hard": 0.0,
     "click-checkboxes-transfer": 0.0,
@@ -42,8 +42,8 @@
     "choose-date-easy": 0.0,
     "multi-orderings": 0.0,
     "click-color": 0.0,
-    "click-test": 0.0,
-    "click-shape": 0.0,
+    "click-test": 1.0,
+    "click-shape": 1.0,
     "click-checkboxes-soft": 0.0,
     "enter-date": 0.0,
     "enter-text-dynamic": 0.0,
@@ -55,8 +55,8 @@
     "tic-tac-toe": 0.0,
     "click-collapsible-2": 0.0,
     "click-dialog-2": 0.0,
-    "click-widget": 0.0
+    "click-widget": 1.0
   },
-  "average_score": 0.071,
+  "average_score": 0.143,
   "num_tasks": 56
 }

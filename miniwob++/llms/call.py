@@ -18,11 +18,12 @@ class CallLLM():
             prompt = f'Q: {query}\n\nA: '
             return prompt
         
-        def model_chat(prompt: str):
+        def model_chat(prompt: str):  # unused
             output, updated_history = self.model.chat(self.tokenizer, prompt, history=None)
             return output
         
         def generation(prompt: str, sample_times: int=1):
+            print("in-llms/call.py: generation()")
             input_ids = self.tokenizer.encode(
                 text=prompt,
                 return_tensors='pt',
@@ -30,15 +31,16 @@ class CallLLM():
                 truncation=False
             ).to(f'cuda:{self.cuda}')
 
+            print("len(input_ids[0])", len(input_ids[0]))
             if len(input_ids[0]) > 7500:
                 return ''
             
             output_ids = self.model.generate(
                 input_ids=input_ids,
                 max_new_tokens=1024,
-                do_sample=True,
-                top_p=0.7,
-                temperature=0.95,
+                do_sample=True, # 随机采样：生成的 token 是从概率分布中采样，而不是选择概率最高的 token
+                top_p=0.7, # Nucleus Sampling避免极端token,只选择累积概率达到 70% 的最有可能的 token
+                temperature=0.7, # 控制生成文本的随机性 -> 降低随机性？ # laj: 0.95 -> 0.7
                 num_return_sequences=sample_times
             )
             
@@ -49,6 +51,13 @@ class CallLLM():
                 output_text_list.append(output_text)
             
             output = output_text_list[0]
+            # # laj debug:
+            # # clean the several "`" before the output
+            # while output.startswith('`'):
+            #     output = output[1:]
+            # # clean the several "`" after the output
+            # while output.endswith('`'):
+            #     output = output[:-1]
             return output
         
         prompt = chatglm3_base_template(query)
@@ -58,5 +67,5 @@ class CallLLM():
         return output
     
     def model_call(self, prompt):
-        output = self.func(prompt)
-        return output
+        output = self.func(prompt)  # Eventually goes to call_pretrain_model(16)
+        return output  # back main.py -> res = asyncio.run(self.llm.model_call(prompt))

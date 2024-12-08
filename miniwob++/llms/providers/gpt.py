@@ -54,7 +54,7 @@ async def call_gpt(model, prompt, history=None, system=None):
 
     client = OpenAI(
         api_key=api_key,
-        base_url="https://cmu.litellm.ai",
+        #base_url="https://cmu.litellm.ai",
     )
     
     messages = []
@@ -83,6 +83,7 @@ async def call_gpt(model, prompt, history=None, system=None):
     response = client.chat.completions.create(
         model="gpt-4o",
         messages=messages,
+        temperature=0.9,
         timeout=1000
     )
 

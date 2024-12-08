@@ -74,7 +74,7 @@ class TestMiniwob:
         #save_pixel_array(obs.get('screenshot', ''), '1.png')
         # laj debug
         self.pic_cnt += 1
-        save_pixel_array(obs.get('screenshot', ''), f'./screenshot1129/{self.pic_cnt}.png')
+        #save_pixel_array(obs.get('screenshot', ''), f'./screenshot1129/{self.pic_cnt}.png')
 
         target = obs.get('utterance', '')
 

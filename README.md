@@ -84,7 +84,12 @@ all                             0.442
 Apache-2.0 License
 
 ## Citation
-If you use this code in your research, please cite:
 ```
-[Citation information]
+@inproceedings{lai2024autowebglm,
+    author = {Lai, Hanyu and Liu, Xiao and Iong, Iat Long and Yao, Shuntian and Chen, Yuxuan and Shen, Pengbo and Yu, Hao and Zhang, Hanchen and Zhang, Xiaohan and Dong, Yuxiao and Tang, Jie},
+    title = {AutoWebGLM: A Large Language Model-based Web Navigating Agent},
+    booktitle = {Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining},
+    pages = {5295–-5306},
+    year = {2024}
+}
 ```

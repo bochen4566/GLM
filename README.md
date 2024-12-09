@@ -1,4 +1,4 @@
-# LLM-Powered Web Navigation Framework
+# LLM-Powered Web Navigation Agent Framework
 
 ## Overview
 This project implements and evaluates Large Language Model (LLM) based web navigation agents on the MiniWoB++ benchmark. We support multiple LLM backends including GPT-4, LLaMA2-7B, and ChatGLM3-6B, with a focus on autonomous web interaction capabilities.
